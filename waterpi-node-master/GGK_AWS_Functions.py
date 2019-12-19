@@ -20,7 +20,7 @@ class DecimalEncoder(json.JSONEncoder):
         return super(DecimalEncoder, self).default(o)
 
 dynamodb = boto3.resource("dynamodb", region_name = REGION_NAME, endpoint_url = ENDPOINT_URL)
-table = dynamodb.Table('waterpi_sensor_data' )
+table = dynamodb.Table('waterpi_sensor_data')
 
 def pullSpecificJSON(key = "sensor/data", timestamp = "1576748116833"):
     try:
@@ -34,8 +34,8 @@ def pullSpecificJSON(key = "sensor/data", timestamp = "1576748116833"):
         print(e.response['Error']['Message'])
     else:
         item = response['Item']
-        print("GetItem succeeded:")
-        print(json.dumps(item, cls=DecimalEncoder))
+        print("**GetItem succeeded:")
+        return(json.dumps(item, cls=DecimalEncoder))
 
 def pullLatestJSON(key = "sensor/data"):
     try:
@@ -50,8 +50,19 @@ def pullLatestJSON(key = "sensor/data"):
         print(e.response['Error']['Message'])
     else:
         item = response['Items']
-        print("Get Latest Item")
-        print(json.dumps(item, cls=DecimalEncoder))
-        
-#pullSpecificJSON()
-#pullLatestJSON()
+        return json.dumps(item, cls=DecimalEncoder)
+
+def JSONstringToList(JList = pullLatestJSON() ):
+    NewJList = ""
+    lenJ = len(JList)
+    for i in range(lenJ):
+        NewJList = NewJList + JList[i]
+
+    remove_list = [" ","{","}","[","]","\""]
+    for _ in remove_list:
+        NewJList = NewJList.replace(_,"")
+
+    NewJList = NewJList.replace(",",":")
+    NewJList = NewJList.split(":")
+    print("**Get Latest Item")
+    return NewJList # Return as List

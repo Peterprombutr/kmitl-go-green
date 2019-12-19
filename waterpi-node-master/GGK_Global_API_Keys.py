@@ -27,4 +27,3 @@ CURRENT_USER_ID = '1206928470443323393' # SET TO BOT
 ###
 REGION_NAME = 'ap-southeast-1'
 ENDPOINT_URL = 'https://dynamodb.ap-southeast-1.amazonaws.com/' #'http://localhost:8000'
-TABLE_NAME = 'waterpi_sensor_data'

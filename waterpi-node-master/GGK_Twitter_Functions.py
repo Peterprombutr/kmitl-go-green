@@ -8,9 +8,15 @@ from GGK_AWS_Functions import *
 global last_sent_DM_id
 global last_recieved_DM_id
 global existing_follower_list
+global auto_ans
 
 last_recieved_DM_id = ""
-existing_follower_list = [ PPsyrius, dos_nji ]
+existing_follower_list = [ 'PPsyrius' ] #, 'dos_nji' ]
+
+auto_ans = [
+        "Welcome to KMITL Go Green!\nFor a basic guide please type '-help'",   
+        "Available instructions:\n-help: Request ths menu\n-latest: Print out the latest stored data from AWS server"
+    ]
 
 ##
 ## GETTING USER PERM
@@ -91,12 +97,12 @@ def read_direct_message_test(api, screen_name):
 
 def twitter_listener(api):
     ## Check for new users, follow them back and send them welcome message
-    for follower in tweepy.Cursor(api.followers).items():
-        if( follower.screen_name not in existing_follower_list ):
-            existing_follower_list.append( follower.screen_name )
-            print("New Follower recieved: " + follower.screen_name)
-            api.create_friendship(follower.id) # Follows back
-            send_direct_message(api, follower.screen_name, "Welcome to KMITL Go Green!")
+#    for follower in tweepy.Cursor(api.followers).items():
+#        if( follower.screen_name not in existing_follower_list ):
+#            existing_follower_list.append( follower.screen_name )
+#            print("New Follower recieved: " + follower.screen_name)
+#            api.create_friendship(follower.id) # Follows back
+#            send_direct_message(api, follower.screen_name, auto_ans[0] )
 
     ## Iterate through the list for new messages
     print()
@@ -136,7 +142,21 @@ def read_direct_message(api, screen_name, last_recieved_DM_id):
         print("Newly recieved DM from " + target.name + " = " + last_dm)
         print("Last Recieved ID: " + last_recieved_DM_id)
 
-        if(last_dm.upper()=="U GAY"):
-            send_direct_message(api,screen_name, "NO U")
+        if(last_dm.upper()=="-HELP"):
+            print("**Should help")
+            send_direct_message(api,screen_name, auto_ans[1])
+        elif(last_dm.upper()=="-LATEST"):
+            JList = JSONstringToList()
+            print("**Should print out value")
+            send_direct_message(api,screen_name,
+                "\ntimestamp: "+JList[12]+
+                "\nKey: "+JList[1]+
+                "\nHumidity Level: "+JList[4]+"%"+
+                "\nSoil Humidity Level: "+str(float(JList[6])/10.0)+"%"+
+                "\nTemperature: "+JList[8]+"°C"+
+                "\nWater Level: "+JList[10]
+            )
+        else:
+            pass
     else:
         print("No new DM from " + target.name + "in the last 10 messages")

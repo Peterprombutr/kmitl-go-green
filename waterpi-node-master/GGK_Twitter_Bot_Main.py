@@ -41,7 +41,7 @@ if( checker.id_str == CURRENT_USER_ID ): # Double check that it's the bot accoun
         print("\n")
         print(datetime.datetime.now())
         twitter_listener(api)
-        time.sleep(60*1) # Check every 1 min for user interaction, up to 15 sec/round for rate limit
+        time.sleep(30*1) # Check every 1 min for user interaction, up to 15 sec/round for rate limit
     keep_running = False
 
 else:
