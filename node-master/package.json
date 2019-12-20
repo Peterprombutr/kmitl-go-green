@@ -1,12 +1,12 @@
 {
-  "name": "water-pi",
+  "name": "kmitl-gg",
   "version": "0.0.1",
   "description": "Houseplant Watering Automation and Monitoring System",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Demirhan Aydin <demirhanaydin@gmail.com>",
+  "author": "Tung Prombutr <61090023@kmitl.ac.th>",
   "license": "MIT",
   "dependencies": {
     "aws-iot-device-sdk": "^2.2.1",
