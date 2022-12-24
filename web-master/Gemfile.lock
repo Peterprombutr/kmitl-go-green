@@ -1317,7 +1317,7 @@ GEM
       activemodel (>= 4)
       aws-sdk-dynamodb (~> 1.0)
       concurrent-ruby (>= 1.0)
-    haml (6.0.10)
+    haml (6.1.1)
       temple (>= 0.8.2)
       thor
       tilt
