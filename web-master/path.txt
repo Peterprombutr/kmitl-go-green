@@ -1,0 +1,4 @@
+key: ***REMOVED***
+secret key: ***REMOVED***
+endpoint: a3f23zc7he5tzr-ats.iot.ap-southeast-1.amazonaws.com
+https://dynamodb.ap-southeast-1.amazonaws.com/

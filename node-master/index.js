@@ -2,22 +2,22 @@ var raspi     = require('raspi-io').RaspiIO,
     five      = require("johnny-five"),
     dhtSensor = require('node-dht-sensor'),
     Gpio      = require('onoff').Gpio,
-    waterPump = new Gpio(18, 'out'),
+    waterPump = new Gpio(17, 'out'),
     awsDevice = require('./device');
 
 var ioPi = new raspi();
 var waterLevelValue, soilValue, lcd, temperature, humidity;
-// 11 is dht11, 4 is pi gpio pin
-// sensorLib.initialize(11, 4);
+// 22 is dht22, 4 is pi gpio pin
+// sensorLib.initialize(22, 4);
 
 var tempSensor = {
   initialize: function() {
-    return dhtSensor.initialize(11, 4);
+    return dhtSensor.initialize(22, 4);
   },
   read: function() {
     var readOut = dhtSensor.read();
     temperature = readOut.temperature.toFixed(2);
-    humidity = readOut.humidity.toFixed(2)
+    humidity = readOut.humidity.toFixed(2);
     console.log('Temperature: ' + temperature + 'C, ' +
             'humidity: ' + humidity + '%');
     // return readOut;

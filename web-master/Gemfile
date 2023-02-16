@@ -1,0 +1,15 @@
+source 'https://rubygems.org'
+
+ruby '3.1.2'
+
+gem 'dynamoid', '~> 3'
+gem 'aws-sdk', '~>3'
+gem 'sinatra'
+gem 'haml'
+gem 'mqtt'
+
+group :development, :test do
+  gem 'http_logger'
+  gem 'awesome_print'
+  gem 'byebug'
+end

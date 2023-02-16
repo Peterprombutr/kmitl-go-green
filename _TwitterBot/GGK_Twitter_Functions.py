@@ -97,12 +97,12 @@ def read_direct_message_test(api, screen_name):
 
 def twitter_listener(api):
     ## Check for new users, follow them back and send them welcome message
-#    for follower in tweepy.Cursor(api.followers).items():
-#        if( follower.screen_name not in existing_follower_list ):
-#            existing_follower_list.append( follower.screen_name )
-#            print("New Follower recieved: " + follower.screen_name)
-#            api.create_friendship(follower.id) # Follows back
-#            send_direct_message(api, follower.screen_name, auto_ans[0] )
+    for follower in tweepy.Cursor(api.followers).items():
+        if( follower.screen_name not in existing_follower_list ):
+            existing_follower_list.append( follower.screen_name )
+            print("New Follower recieved: " + follower.screen_name)
+            api.create_friendship(follower.id) # Follows back
+            send_direct_message(api, follower.screen_name, auto_ans[0] )
 
     ## Iterate through the list for new messages
     print()

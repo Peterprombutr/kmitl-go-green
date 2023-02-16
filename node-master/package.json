@@ -1,0 +1,19 @@
+{
+  "name": "kmitl-gg",
+  "version": "0.0.1",
+  "description": "Houseplant Watering Automation and Monitoring System",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Tung Prombutr <61090023@kmitl.ac.th>",
+  "license": "MIT",
+  "dependencies": {
+    "aws-iot-device-sdk": "^2.2.12",
+    "johnny-five": "^2.1.0",
+    "lcd": "^3.1.1",
+    "node-dht-sensor": "^0.4.3",
+    "onoff": "^6.0.3",
+    "raspi-io": "^11.0.0"
+  }
+}
