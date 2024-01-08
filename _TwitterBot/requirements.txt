@@ -1,3 +1,3 @@
 boto3==1.34.11
-botocore==1.34.11
+botocore==1.34.14
 tweepy==4.14.0
