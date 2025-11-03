@@ -1661,7 +1661,8 @@ GEM
     jmespath (1.6.2)
     logger (1.7.0)
     minitest (5.25.5)
-    mqtt (0.6.0)
+    mqtt (0.7.0)
+      logger
     mustermann (3.0.4)
       ruby2_keywords (~> 0.0.1)
     rack (3.2.3)
