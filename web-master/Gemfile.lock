@@ -1655,7 +1655,7 @@ GEM
       temple (>= 0.8.2)
       thor
       tilt
-    http_logger (1.0.1)
+    http_logger (1.0.2)
     i18n (1.14.7)
       concurrent-ruby (~> 1.0)
     jmespath (1.6.2)
